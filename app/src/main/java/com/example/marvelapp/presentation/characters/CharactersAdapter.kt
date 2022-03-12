@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.core.domain.model.Character
 
 class CharactersAdapter : PagingDataAdapter<Character, CharactersViewHolder>(diffCallback) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
         return CharactersViewHolder.create(parent)
     }
