@@ -1,6 +1,5 @@
 package com.example.marvelapp.framework.network.response
 
-import com.example.core.domain.model.Character
 import com.example.core.domain.model.Comic
 import com.google.gson.annotations.SerializedName
 
@@ -14,6 +13,6 @@ data class ComicsResponse(
 fun ComicsResponse.toComicModel(): Comic {
     return Comic (
         id = this.id,
-        imageUrl = "${this.thumbnail.path}.${this.thumbnail.extension}".replace("http","https")
+        imageUrl = this.thumbnail.getHttpsUrl()
     )
 }
