@@ -5,13 +5,13 @@ import com.example.core.data.repository.CharacterRepository
 import com.example.testing.MainCoroutineRule
 import com.example.testing.model.CharacterFactory
 import com.example.testing.pagingsource.PagingSourceFactory
-import com.nhaarman.mockitokotlin2.times
+import com.example.usecase.GetCharactersUseCase
+import com.example.usecase.GetCharactersUseCaseImpl
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
@@ -48,7 +48,12 @@ class GetCharactersUseCaseImplTest {
         whenever(repository.getCharacters("")).thenReturn(fakePagingSource)
 
 
-        val result = getCharactersUseCase.invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
+        val result = getCharactersUseCase.invoke(
+            GetCharactersUseCase.GetCharactersParams(
+                "",
+                PagingConfig(20)
+            )
+        )
 
         verify(repository).getCharacters("")
 

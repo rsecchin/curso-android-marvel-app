@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.model.Comic
 import com.example.core.domain.model.Event
-import com.example.core.usecase.GetCharacterCategoriesUseCase
-import com.example.core.usecase.base.ResultStatus
+import com.example.usecase.GetCharacterCategoriesUseCase
+import com.example.usecase.base.ResultStatus
 import com.example.marvelapp.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow

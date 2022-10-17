@@ -1,11 +1,11 @@
-package com.example.core.usecase
+package com.example.usecase
 
 import com.example.core.data.repository.CharacterRepository
 import com.example.core.domain.model.Comic
 import com.example.core.domain.model.Event
-import com.example.core.usecase.base.AppCoroutinesDispatchers
-import com.example.core.usecase.base.ResultStatus
-import com.example.core.usecase.base.UseCase
+import com.example.usecase.base.AppCoroutinesDispatchers
+import com.example.usecase.base.ResultStatus
+import com.example.usecase.base.UseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext

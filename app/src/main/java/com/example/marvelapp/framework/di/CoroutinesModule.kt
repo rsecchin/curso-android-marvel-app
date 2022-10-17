@@ -1,6 +1,6 @@
 package com.example.marvelapp.framework.di
 
-import com.example.core.usecase.base.AppCoroutinesDispatchers
+import com.example.usecase.base.AppCoroutinesDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
