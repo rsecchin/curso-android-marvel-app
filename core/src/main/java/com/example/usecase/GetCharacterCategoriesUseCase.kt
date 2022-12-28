@@ -3,7 +3,7 @@ package com.example.usecase
 import com.example.core.data.repository.CharacterRepository
 import com.example.core.domain.model.Comic
 import com.example.core.domain.model.Event
-import com.example.usecase.base.AppCoroutinesDispatchers
+import com.example.usecase.base.CoroutinesDispatchers
 import com.example.usecase.base.ResultStatus
 import com.example.usecase.base.UseCase
 import kotlinx.coroutines.async
@@ -13,21 +13,21 @@ import javax.inject.Inject
 
 interface GetCharacterCategoriesUseCase {
 
-    operator fun invoke(params: GetComicsParams): Flow<ResultStatus<Pair<List<Comic>, List<Event>>>>
+    operator fun invoke(params: GetCategoriesParams): Flow<ResultStatus<Pair<List<Comic>, List<Event>>>>
 
-    data class GetComicsParams(val characterId: Int)
+    data class GetCategoriesParams(val characterId: Int)
 }
 
 class GetCharacterCategoriesUseCaseImpl @Inject constructor(
     private val repository: CharacterRepository,
-    private val dispatchers: AppCoroutinesDispatchers
+    private val dispatchers: CoroutinesDispatchers
 ) : GetCharacterCategoriesUseCase,
-    UseCase<GetCharacterCategoriesUseCase.GetComicsParams, Pair<List<Comic>, List<Event>>>() {
+    UseCase<GetCharacterCategoriesUseCase.GetCategoriesParams, Pair<List<Comic>, List<Event>>>() {
 
     override suspend fun doWork(
-        params: GetCharacterCategoriesUseCase.GetComicsParams
+        params: GetCharacterCategoriesUseCase.GetCategoriesParams
     ): ResultStatus<Pair<List<Comic>, List<Event>>> {
-        return withContext(dispatchers.io) {
+        return withContext(dispatchers.io()) {
 
             val comicsDeferred = async { repository.getComics(params.characterId) }
             val eventsDeferred = async { repository.getEvents(params.characterId) }
